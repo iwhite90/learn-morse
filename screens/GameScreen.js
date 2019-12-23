@@ -42,6 +42,7 @@ const GameScreen = (props) => {
   const [rendered, setRendered] = useState(false);
 
   const fadeInDuration = 1000;
+  const fadeOutDuration = 500;
 
   React.useEffect(() => {
     Animated.timing(
@@ -186,10 +187,10 @@ const GameScreen = (props) => {
       fadeAnim,
       {
         toValue: 0,
-        duration: fadeInDuration,
+        duration: fadeOutDuration,
       }
     ).start();
-    setTimeout(() => props.setShowGameScreen(false), fadeInDuration);
+    setTimeout(() => props.setShowGameScreen(false), fadeOutDuration);
     setRendered(false);
   }
 
