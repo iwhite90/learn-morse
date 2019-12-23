@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { StyleSheet, Text, Button, View, TouchableOpacity, ImageBackground, BackHandler } from 'react-native';
 import { Audio } from 'expo-av';
 
-import Header from '../components/Header';
+import GameHeader from '../components/GameHeader';
 import HintCard from '../components/HintCard';
 import NoHintCard from '../components/NoHintCard';
 import DoneCard from '../components/DoneCard';
@@ -171,8 +171,8 @@ const GameScreen = (props) => {
   });
 
   return (
-    <View style={{flex:1}}>
-        <Header text='Learn Morse' back={back} showRef={setModalVisible}>
+    <View style={{height: '100%'}}>
+        <GameHeader text='Learn Morse' back={back} showRef={setModalVisible} game={props.game}>
           <View style={{flexDirection: 'row', flex:1}}>
           {
             cards.map((card, index) => {
@@ -188,43 +188,40 @@ const GameScreen = (props) => {
             })
           }
           </View>
-        </Header>
-          <View style={styles.bottomContainer}>
-              <View style={ [styles.messageContainer, good ? styles.good : styles.bad] }>
-                  <Text style={{flex: 1, color: 'white', textAlign: 'center', textAlignVertical: 'center', fontSize: 40}}>{answer.join(' ')}</Text>
-              </View>
-            <Tapper onPressIn={pressed} onPressOut={lifted} submit={submit} takeInput={takeInput} handActive={handActive}/>
-            <View style={styles.nextView}>
-              {showNext && 
-                <View style= {styles.nextButton}>
-                    <TouchableOpacity onPress={tryAgain} style={styles.touchable}>
-                        <Text style={styles.buttonText}>⟲</Text>
-                    </TouchableOpacity>
-                </View> }
-                {showNext && 
-                <View style= {styles.nextButton}>
-                    <TouchableOpacity onPress={next} style={styles.touchable}>
-                        <Text style={styles.buttonText}>{trainingWheels ? '►' : '✓'}</Text>
-                    </TouchableOpacity>
-                </View> }
+        </GameHeader>
+        <View style={styles.bottomContainer}>
+            <View style={ [styles.messageContainer, good ? styles.good : styles.bad] }>
+                <Text style={{flex: 1, color: 'white', textAlign: 'center', textAlignVertical: 'center', fontSize: 40}}>{answer.join(' ')}</Text>
             </View>
+          <Tapper onPressIn={pressed} onPressOut={lifted} submit={submit} takeInput={takeInput} handActive={handActive}/>
+          <View style={styles.nextView}>
+            {showNext && 
+              <View style= {styles.nextButton}>
+                  <TouchableOpacity onPress={tryAgain} style={styles.touchable}>
+                      <Text style={styles.buttonText}>⟲</Text>
+                  </TouchableOpacity>
+              </View> }
+              {showNext && 
+              <View style= {styles.nextButton}>
+                  <TouchableOpacity onPress={next} style={styles.touchable}>
+                      <Text style={styles.buttonText}>{trainingWheels ? '►' : '✓'}</Text>
+                  </TouchableOpacity>
+              </View> }
           </View>
+        </View>
       <Reference image={require('../assets/strahan.jpg')} modalVisible={modalVisible} setModalVisible={setModalVisible} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  image: {
-      width: '100%',
-      height: '75%'
-  },
   bottomContainer: {
-    flex: 1,
+    width: '100%',
+    height: '50%',
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'space-around',
-    marginVertical: 60,
+    paddingVertical: 60
   },
   buttonText: {
     fontSize: 30, 

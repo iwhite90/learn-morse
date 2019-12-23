@@ -4,23 +4,8 @@ import { View, StyleSheet, ImageBackground } from 'react-native';
 import RoundButton from './RoundButton';
 
 const RoundChooser = (props) => {
-  const images = {
-    1: require("../assets/boat.jpg"),
-    2: require("../assets/fern.jpg"),
-    3: require("../assets/berry.jpg"),
-    4: require("../assets/rose.jpg"),
-    5: require("../assets/mountain.jpg"),
-    6: require("../assets/shed.jpg"),
-    7: require("../assets/stones.jpg"),
-    8: require("../assets/bluebells.jpg"),
-    9: require("../assets/sunset.jpg"),
-    10: require("../assets/tulip.jpg"),
-  }
-
-  let picNum = Math.floor(Math.random() * 10) + 1;
-
   return (
-    <ImageBackground source={images[picNum]} style={styles.image}>
+    <ImageBackground source={require('../assets/stones.jpg')} style={styles.image}>
         <View style={styles.container}>
             <RoundButton roundNum={1} text='1. A,S,T,E,D' color='#b0d5f560' startGame={props.startGame} />
             <RoundButton roundNum={2} text='2. + B,H,M,O' color='#b2f5f560' startGame={props.startGame} />

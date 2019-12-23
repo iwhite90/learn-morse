@@ -5,7 +5,8 @@ const COLOR = {
     orange: '#d69d47',
     lightOrange: '#eed7b5',
     blueGrey: '#42476E',
-    red: '#d04a40'
+    red: '#d04a40',
+    green: '#2CB135'
 }
 
 export default COLOR

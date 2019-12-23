@@ -19,12 +19,7 @@ export default function App() {
     <View style={{width: '100%', height: '100%'}}>
     {!showGameScreen &&
       <View style={{flex: 1}}>
-        <Header text='Learn Morse'>
-          <View>
-            <Text style={styles.text}>. _ . .   .   . _   . _ .   _ .</Text>
-            <Text style={styles.text}>_ _   _ _ _   . _ .   . . .   .</Text>
-          </View>
-        </Header>
+        <Header text='Learn Morse' />
         <RoundChooser startGame={startGame} />
       </View>
     }

@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
+import COLOR from '../constants/color';
+
 const Card = (props) => {
     let numCards = props.numCards;
     const width = (100 / numCards) + '%';
@@ -18,11 +20,10 @@ const styles = StyleSheet.create({
         maxHeight: 130,
         height: 130,
         maxWidth: '30%',
-        backgroundColor: '#b0d5f5',
+        backgroundColor: COLOR.lightBlue + '95',
         borderColor: 'white',
         borderWidth: 2,
         borderRadius: 10,
-        elevation: 10,
         alignItems: 'center',
         marginVertical: 100,
         marginHorizontal: 5,
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
     },
     morse: {
         flex: 2,
-        fontSize: 18,
+        fontSize: 22,
         fontWeight: 'bold'
     },
     done: {
