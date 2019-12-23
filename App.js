@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, Button, View } from 'react-native';
+import { StyleSheet, Text, Button, View, Image } from 'react-native';
 
 import Header from './components/Header';
 import RoundChooser from './components/RoundChooser';
 import GameScreen from './screens/GameScreen';
 
 export default function App() {
-
   const [showGameScreen, setShowGameScreen] = useState(false);
   const [game, setGame] = useState(0);
 

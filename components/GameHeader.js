@@ -3,9 +3,11 @@ import { View, Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react
 
 import COLOR from '../constants/color';
 
+import tulip from "../assets/tulip.jpg";
+
 const GameHeader = (props) => {
     const images = {
-        0: require("../assets/tulip.jpg"),
+        0: tulip,
         1: require("../assets/boat.jpg"),
         2: require("../assets/fern.jpg"),
         3: require("../assets/foxgloves.jpg"),
@@ -17,6 +19,8 @@ const GameHeader = (props) => {
         9: require("../assets/acer.jpg"),
     }
 
+    const buttonStyle = props.rendered ? [styles.button, {elevation: 10}] : styles.button;
+
     return (
         <ImageBackground source={images[props.game]} style={styles.image} imageStyle={{height: '100%'}}>
             <View style={styles.container}>
@@ -25,14 +29,14 @@ const GameHeader = (props) => {
                 </View>
                 <View style={styles.buttons}>
                     { props.back && 
-                    <View style={styles.button}>
-                        <TouchableOpacity style={styles.touchable} onPress={props.back}>
+                    <View style={buttonStyle}>
+                        <TouchableOpacity style={styles.touchable} onPress={props.back} disabled={!props.rendered}>
                             <Text style={styles.buttonText}>◄</Text>
                         </TouchableOpacity>
                     </View> }
                     { props.back && 
-                    <View style={styles.button}>
-                        <TouchableOpacity style={styles.touchable} onPress={() => props.showRef(true)}>
+                    <View style={buttonStyle}>
+                        <TouchableOpacity style={styles.touchable} onPress={() => props.showRef(true)} disabled={!props.rendered}>
                             <Text style={styles.buttonText}>?</Text>
                         </TouchableOpacity>
                     </View> }
@@ -82,8 +86,7 @@ const styles = StyleSheet.create({
         height: 40,
         borderRadius: 20,
         borderWidth: 1,
-        borderColor: 'white',
-        elevation: 10
+        borderColor: 'white'
     },
     text: {
         fontSize: 24,

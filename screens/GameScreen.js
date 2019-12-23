@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { StyleSheet, Text, Button, View, TouchableOpacity, ImageBackground, BackHandler } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import { StyleSheet, Text, Button, View, TouchableOpacity, ImageBackground, BackHandler, Animated } from 'react-native';
 import { Audio } from 'expo-av';
 
 import GameHeader from '../components/GameHeader';
@@ -38,6 +38,24 @@ const GameScreen = (props) => {
   const [handActive, setHandActive] = useState(true);
   const [sound, setSound] = useState(new Audio.Sound());
   const [soundLoaded, setSoundLoaded] = useState(false);
+  const [fadeAnim] = useState(new Animated.Value(0));
+  const [rendered, setRendered] = useState(false);
+
+  const fadeInDuration = 1000;
+
+  React.useEffect(() => {
+    Animated.timing(
+      fadeAnim,
+      {
+        toValue: 1,
+        duration: fadeInDuration,
+      }
+    ).start();
+  }, [])
+
+  React.useEffect(() => {
+    setTimeout(() => setRendered(true), fadeInDuration);
+  }, [])
 
   const loadSound = async () => {
     try {
@@ -163,7 +181,17 @@ const GameScreen = (props) => {
     setFinished(true);
   }
 
-  const back = () => props.setShowGameScreen(false);
+  const back = () => {
+    Animated.timing(
+      fadeAnim,
+      {
+        toValue: 0,
+        duration: fadeInDuration,
+      }
+    ).start();
+    setTimeout(() => props.setShowGameScreen(false), fadeInDuration);
+    setRendered(false);
+  }
 
   BackHandler.addEventListener('hardwareBackPress', () => {
     back();
@@ -171,8 +199,8 @@ const GameScreen = (props) => {
   });
 
   return (
-    <View style={{height: '100%'}}>
-        <GameHeader text='Learn Morse' back={back} showRef={setModalVisible} game={props.game}>
+    <Animated.View style={{height: '100%', opacity: fadeAnim}}>
+        <GameHeader text='Learn Morse' back={back} showRef={setModalVisible} game={props.game} rendered={rendered}>
           <View style={{flexDirection: 'row', flex:1}}>
           {
             cards.map((card, index) => {
@@ -193,7 +221,7 @@ const GameScreen = (props) => {
             <View style={ [styles.messageContainer, good ? styles.good : styles.bad] }>
                 <Text style={{flex: 1, color: 'white', textAlign: 'center', textAlignVertical: 'center', fontSize: 40}}>{answer.join(' ')}</Text>
             </View>
-          <Tapper onPressIn={pressed} onPressOut={lifted} submit={submit} takeInput={takeInput} handActive={handActive}/>
+          <Tapper onPressIn={pressed} onPressOut={lifted} submit={submit} takeInput={takeInput} handActive={handActive} rendered={rendered}/>
           <View style={styles.nextView}>
             {showNext && 
               <View style= {styles.nextButton}>
@@ -210,7 +238,7 @@ const GameScreen = (props) => {
           </View>
         </View>
       <Reference image={require('../assets/strahan.jpg')} modalVisible={modalVisible} setModalVisible={setModalVisible} />
-    </View>
+    </Animated.View>
   );
 }
 

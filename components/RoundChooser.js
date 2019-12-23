@@ -2,10 +2,11 @@ import React, {useState} from 'react';
 import { View, StyleSheet, ImageBackground } from 'react-native';
 
 import RoundButton from './RoundButton';
+import backgroundImage from '../assets/stones.jpg';
 
 const RoundChooser = (props) => {
   return (
-    <ImageBackground source={require('../assets/stones.jpg')} style={styles.image}>
+    <ImageBackground source={backgroundImage} style={styles.image}>
         <View style={styles.container}>
             <RoundButton roundNum={1} text='1. A,S,T,E,D' color='#b0d5f560' startGame={props.startGame} />
             <RoundButton roundNum={2} text='2. + B,H,M,O' color='#b2f5f560' startGame={props.startGame} />

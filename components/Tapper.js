@@ -23,7 +23,8 @@ const Tapper = (props) => {
         return () => clearInterval(interval);
     }, [handSize, handActive]);
 
-    const buttonStyle = props.takeInput ? styles.button : [styles.button, {backgroundColor: COLOR.lightOrange}];
+    const b = props.takeInput ? styles.button : [styles.button, {backgroundColor: COLOR.lightOrange}];
+    const buttonStyle = props.rendered ? [b, {elevation: 10}] : b;
     const hand = props.takeInput ? '👆' : '';
 
     return (
@@ -58,7 +59,6 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         borderColor: 'white',
         borderWidth: 1,
-        elevation: 10
     },
     text: {
         fontSize: 40,
