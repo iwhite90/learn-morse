@@ -28,6 +28,7 @@ const Tapper = (props) => {
             <TouchableOpacity 
                 style={styles.button}
                 onPressIn={props.onPressIn}
+                onPressOut={props.onPressOut}
                 onPress={() => props.submit('.')}
                 onLongPress={() => props.submit('_')}
                 delayLongPress={180}

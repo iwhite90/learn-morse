@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, Button, View, TouchableOpacity, ImageBackground } from 'react-native';
+import { Audio } from 'expo-av';
 
 import Header from '../components/Header';
 import HintCard from '../components/HintCard';
@@ -35,6 +36,34 @@ const GameScreen = (props) => {
   const [timer, setTimer] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [handActive, setHandActive] = useState(true);
+  const [sound, setSound] = useState(new Audio.Sound());
+  const [soundLoaded, setSoundLoaded] = useState(false);
+
+  const loadSound = async () => {
+    try {
+        let source = require('../assets/beep.wav');
+        await sound.loadAsync(source);
+        setSoundLoaded(true);
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  
+  if (!soundLoaded) {
+    loadSound();
+  }
+
+  const handlePlaySound = async () => {
+    try {
+      await sound
+        .playAsync()
+        .catch(error => {
+          console.log(error)
+        })
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const submit = (char) => {
     if (!good) setGood(true);
@@ -82,8 +111,11 @@ const GameScreen = (props) => {
 
   const pressed = () => {
     if (timer) clearTimeout(timer);
+    handlePlaySound();
     setHandActive(false);
   }
+
+  const lifted = () => sound.stopAsync();
 
   const allDone = checkCards => 
     checkCards.filter(card => card.done).length === checkCards.length;
@@ -156,7 +188,7 @@ const GameScreen = (props) => {
               <View style={ [styles.messageContainer, good ? styles.good : styles.bad] }>
                   <Text style={{flex: 1, color: 'white', textAlign: 'center', textAlignVertical: 'center', fontSize: 40}}>{answer.join(' ')}</Text>
               </View>
-            <Tapper onPressIn={pressed} submit={submit} takeInput={takeInput} handActive={handActive}/>
+            <Tapper onPressIn={pressed} onPressOut={lifted} submit={submit} takeInput={takeInput} handActive={handActive}/>
             <View style={styles.nextView}>
               {showNext && 
                 <View style= {styles.nextButton}>
