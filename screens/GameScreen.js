@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, Button, View, TouchableOpacity, ImageBackground } from 'react-native';
+import { StyleSheet, Text, Button, View, TouchableOpacity, ImageBackground, BackHandler } from 'react-native';
 import { Audio } from 'expo-av';
 
 import Header from '../components/Header';
@@ -164,6 +164,11 @@ const GameScreen = (props) => {
   }
 
   const back = () => props.setShowGameScreen(false);
+
+  BackHandler.addEventListener('hardwareBackPress', () => {
+    back();
+    return true;
+  });
 
   return (
     <View style={{flex:1}}>
