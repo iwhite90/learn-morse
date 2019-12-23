@@ -12,7 +12,7 @@ const Reference = (props) => {
           transparent={false}
           visible={props.modalVisible}>
           
-        <ImageBackground source={require('../assets/sunset.jpg')} style={styles.image}>
+        <ImageBackground source={require('../assets/strahan.jpg')} style={styles.image}>
           <View style={styles.container}>
             <View style={{height: 500, flexDirection: 'row', width: '100%', justifyItems: 'center', flexWrap: 'wrap'}}>
                 {

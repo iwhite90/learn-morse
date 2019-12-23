@@ -6,15 +6,18 @@ import RoundButton from './RoundButton';
 const RoundChooser = (props) => {
   const images = {
     1: require("../assets/boat.jpg"),
-    2: require("../assets/car.jpg"),
+    2: require("../assets/fern.jpg"),
     3: require("../assets/berry.jpg"),
     4: require("../assets/rose.jpg"),
     5: require("../assets/mountain.jpg"),
     6: require("../assets/shed.jpg"),
-    7: require("../assets/stones.jpg")
+    7: require("../assets/stones.jpg"),
+    8: require("../assets/bluebells.jpg"),
+    9: require("../assets/sunset.jpg"),
+    10: require("../assets/tulip.jpg"),
   }
 
-  let picNum = Math.floor(Math.random() * 7) + 1;
+  let picNum = Math.floor(Math.random() * 10) + 1;
 
   return (
     <ImageBackground source={images[picNum]} style={styles.image}>
