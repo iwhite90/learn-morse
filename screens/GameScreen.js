@@ -193,7 +193,7 @@ const GameScreen = (props) => {
               {showNext && 
                 <View style= {styles.nextButton}>
                     <TouchableOpacity onPress={tryAgain} style={styles.touchable}>
-                        <Text style={[styles.buttonText, {fontSize: 30}]}>⟲</Text>
+                        <Text style={styles.buttonText}>⟲</Text>
                     </TouchableOpacity>
                 </View> }
                 {showNext && 
@@ -204,7 +204,7 @@ const GameScreen = (props) => {
                 </View> }
             </View>
           </View>
-      <Reference modalVisible={modalVisible} setModalVisible={setModalVisible} />
+      <Reference image={require('../assets/strahan.jpg')} modalVisible={modalVisible} setModalVisible={setModalVisible} />
     </View>
   );
 }
@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 30, 
     fontWeight: 'bold', 
-    color: 'black'
+    color: COLOR.blueGrey
   },
   touchable: {
     flex: 1,
@@ -270,9 +270,9 @@ const styles = StyleSheet.create({
   nextButton: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#E6E6E6',
+    backgroundColor: COLOR.lightBlue,
     width: 75,
-    height: 60,
+    height: 50,
     borderRadius: 20,
     borderWidth: 1,
     borderColor: 'white',
