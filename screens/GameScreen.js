@@ -258,14 +258,14 @@ const styles = StyleSheet.create({
     height: 60,
     width: 180,
     borderRadius: 20,
-    borderColor: COLOR.lightBlue,
+    borderColor: COLOR.darkBlue,
     borderWidth: 3
   },
   good: {
-    backgroundColor: COLOR.darkBlue
+    backgroundColor: COLOR.mediumBlue
   },
   bad: {
-    backgroundColor: '#de4337'
+    backgroundColor: COLOR.red
   },
   nextButton: {
     justifyContent: 'center',

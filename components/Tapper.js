@@ -23,17 +23,20 @@ const Tapper = (props) => {
         return () => clearInterval(interval);
     }, [handSize, handActive]);
 
+    const buttonStyle = props.takeInput ? styles.button : [styles.button, {backgroundColor: COLOR.lightOrange}];
+    const hand = props.takeInput ? '👆' : '';
+
     return (
         <View style= { styles.tapper }>
             <TouchableOpacity 
-                style={styles.button}
+                style={buttonStyle}
                 onPressIn={props.onPressIn}
                 onPressOut={props.onPressOut}
                 onPress={() => props.submit('.')}
                 onLongPress={() => props.submit('_')}
                 delayLongPress={180}
                 disabled={!props.takeInput}>
-                <Text style={[styles.text, {fontSize: handSize}]}>👆</Text>
+                <Text style={[styles.text, {fontSize: handSize}]}>{hand}</Text>
             </TouchableOpacity>
         </View>
     );
