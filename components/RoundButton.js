@@ -16,9 +16,10 @@ const RoundButton = (props) => {
 
 const styles = StyleSheet.create({
     button: {
-        height: '12%',
+        flex: 1,
         width: 150,
-        marginVertical: 10,
+        marginBottom: 15,
+        justifyContent: 'center',
         elevation: 5, 
         borderRadius: 20,
         borderColor: 'white',

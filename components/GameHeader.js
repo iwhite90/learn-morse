@@ -49,14 +49,13 @@ const GameHeader = (props) => {
 
 const styles = StyleSheet.create({
     image: {
-        width: '100%',
         height: '50%',
         borderBottomColor: 'green',
         borderBottomWidth: 1
     },
     container: {
         alignItems: 'center',
-        height: '100%',
+        flex: 1,
         padding: 50
     },
     touchable: {

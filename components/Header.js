@@ -9,7 +9,7 @@ const Header = (props) => {
                 <View style={styles.header}>
                     <Text style={styles.headerText}>{props.text}</Text>
                 </View> 
-                <View style={{height: '100%', justifyContent: 'center'}}>
+                <View style={{flex: 5, justifyContent: 'flex-start'}}>
                     <Text style={styles.text}>. _ . .   .   . _</Text>
                     <Text style={styles.text}>. _ .   _ .</Text>
                     <Text style={styles.text}>_ _   _ _ _   . _ .</Text>
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     },
     header: {
         width: '100%',
-        height: 30,
+        flex: 1,
         flexDirection: 'row',
         justifyContent: 'center'
     },

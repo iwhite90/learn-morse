@@ -200,9 +200,10 @@ const GameScreen = (props) => {
   });
 
   return (
-    <Animated.View style={{height: '100%', opacity: fadeAnim}}>
+    <Animated.View style={{flex: 1, opacity: fadeAnim}}>
         <GameHeader text='Learn Morse' back={back} showRef={setModalVisible} game={props.game} rendered={rendered}>
-          <View style={{flexDirection: 'row', flex:1}}>
+          <View style={{flex: 4}}></View>
+          <View style={{flexDirection: 'row', flex: 1, alignItems: 'center'}}>
           {
             cards.map((card, index) => {
               if (card.done) {
@@ -217,6 +218,7 @@ const GameScreen = (props) => {
             })
           }
           </View>
+          <View style={{flex: 1}}></View>
         </GameHeader>
         <View style={styles.bottomContainer}>
             <View style={ [styles.messageContainer, good ? styles.good : styles.bad] }>
@@ -245,8 +247,7 @@ const GameScreen = (props) => {
 
 const styles = StyleSheet.create({
   bottomContainer: {
-    width: '100%',
-    height: '50%',
+    flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'space-around',

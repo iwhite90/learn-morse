@@ -11,7 +11,7 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/play-icon2.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -24,9 +24,13 @@
       "**/*",
       "assets/*"
     ],
+    "android": {
+      "package": "com.tassiedoc.learn_morse",
+      "permissions": []
+    },
     "ios": {
       "supportsTablet": true
     },
-    "description": ""
+    "description": "A fun game to learn Morse code!"
   }
 }

@@ -15,7 +15,7 @@ export default function App() {
   }
 
   return (
-    <View style={{width: '100%', height: '100%'}}>
+    <View style={{flex: 1}}>
     {!showGameScreen &&
       <View style={{flex: 1}}>
         <Header text='Learn Morse' />
