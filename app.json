@@ -9,7 +9,7 @@
       "android",
       "web"
     ],
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/play-icon2.png",
     "splash": {
@@ -26,6 +26,7 @@
     ],
     "android": {
       "package": "com.tassiedoc.learn_morse",
+      "versionCode": 2,
       "permissions": []
     },
     "ios": {
